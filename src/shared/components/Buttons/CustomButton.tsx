@@ -5,9 +5,10 @@ type CustomButtonProps = {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  icon?: React.ReactNode;
 };
 
-const Button = ({ title, onPress, style, textStyle }: CustomButtonProps) => {
+const CustomButton = ({ title, onPress, style, textStyle, icon}: CustomButtonProps) => {
   return (
     <Pressable
       onPress={onPress}
@@ -17,6 +18,7 @@ const Button = ({ title, onPress, style, textStyle }: CustomButtonProps) => {
         pressed && styles.pressed,
       ]}
     >
+      {icon}
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </Pressable>
   );
@@ -39,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default CustomButton;
