@@ -2,10 +2,10 @@ import { View, Text, Image, TouchableOpacity} from 'react-native';
 import { useState, useEffect} from 'react';
 import styles from '../../../../src/features/auth/styles/VerificationScreenStyles';
 import { router } from 'expo-router';
-import CustomButton from '../../../../src/shared/components/Buttons/CustomButton';
+import CustomButton from '../../../shared/components/buttons/CustomButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
-import OTPInput from '../../../../src/shared/components/OTPInput/OTPInput';
+import OTPInput from '../../../shared/components/otp_input/OTPInput';
 
 export default function VerificationCodeScreen() {
   const { phoneNumber } = useLocalSearchParams();

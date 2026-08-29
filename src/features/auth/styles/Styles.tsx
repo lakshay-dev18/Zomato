@@ -7,28 +7,37 @@ const styles = StyleSheet.create({
         paddingHorizontal:32,
 
     },
+    skipButtonContainer:{
+        position:'absolute',
+        left:'90%',
+        top:'6%',
+    },
     top:{
         flex:1,
         marginBottom: 16,
     },
     phoneContainer: {
-        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },
     countryCode: {
-        fontSize: 16,
+        fontSize: 22,
         marginRight: 5,
+        position: 'absolute',
+        zIndex: 1,
+        paddingBottom:17,
+        paddingRight:130
     },
     inputField:{
         width: '100%',
-        fontSize: 16,
+        fontSize: 22,
         textAlign: 'center',
         height:59,
         borderWidth:1,
         backgroundColor:'white',
         borderRadius:8,
         marginBottom: 16,
+        paddingLeft:40,
     },   
     sendOtpButton:{
         backgroundColor:'black',
@@ -37,7 +46,7 @@ const styles = StyleSheet.create({
     sendOtpButtonText:{
         color: Color.button,
         fontFamily: "Segoe UI",
-        fontSize: 18,
+        fontSize: 20,
         letterSpacing: 0,
         textAlign: "center",
     },
@@ -62,13 +71,22 @@ const styles = StyleSheet.create({
     emailButton:{
         backgroundColor:'white',
         marginBottom: 16,
+        flexDirection: "row",
+        alignItems: 'center',      
+        justifyContent: 'center',
+        position: 'relative',
     },
     emailButtonText:{
         fontFamily: "Segoe UI",
-        fontSize: 19,
+        fontSize: 18,
         letterSpacing: 0,
         textAlign: 'center',
+        marginLeft: 35,
 
+    },
+    emailButtonLogo:{
+        position:'absolute',
+        left:'5%'
     },
     fbButton:{
         backgroundColor:Color.button,
@@ -77,16 +95,18 @@ const styles = StyleSheet.create({
         opacity: 1,
         borderRadius: 8,
         marginBottom: 16,
-
+        flexDirection:'row',
     },
     fbButtonText:{
         fontFamily: 'Segoe UI',
-        fontWeight: 400,
-        fontSize: 19,
+        fontSize: 18,
         lineHeight: 24,
         letterSpacing: 0,
-        textAlign: 'center'
-
+        left:'12%'
+    },
+    facebookButtonLogo:{
+        position:'absolute',
+        left:'10%'
     },
     googleButton:{
         width: '50%',
@@ -95,16 +115,20 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         backgroundColor:Color.button,
         marginBottom: 16,
-
+        flexDirection:'row'
     },
     googleButtonText:{
         fontFamily: 'Segoe UI',
         fontWeight: 400,
-        fontSize: 19,
+        fontSize: 18,
         lineHeight: 24,
         letterSpacing: 0,
         textAlign: 'center',
-
+        left:'12%'
+    },
+    googleButtonLogo:{
+        position:'absolute',
+        left:'10%'
     },
     buttonContainer:{
         flexDirection: "row",
@@ -117,11 +141,13 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     linkContainerText:{
-        color:Color.button
+        color:Color.button,
+        fontSize:14
     },
     link:{
         textDecorationLine: 'underline',
         color:Color.button,
+        fontSize:14
     },
     linkContainer2:{
         flexDirection: 'row',

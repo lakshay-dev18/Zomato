@@ -1,7 +1,7 @@
 import { Pressable, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
 
 type CustomButtonProps = {
-  title: string;
+  title?: string;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
