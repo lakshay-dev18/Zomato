@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     },
     discountIcon:{
         width:'45%',
-        borderRadius:5
+        borderRadius:5,
     },
     text:{
         fontFamily: 'Segoe UI',
@@ -88,10 +88,20 @@ const styles = StyleSheet.create({
     },
     seeMoreContainer:{
         top:'6%',
-        right:'3%'
-    }
+        left:'3%',
+    },
+    seeMore:{
+        height:40,
+        width:'95%',
+        resizeMode:'contain'
+    },
+    restaurantCount:{
+        fontFamily: 'Segoe UI',
+        fontSize: 20,
+        letterSpacing: 0,
+        top:'7%',
+        left:'4%'
+    },
+    
 })
 export default styles;
-
-
-

@@ -1,4 +1,4 @@
-import{View,Text, StyleSheet, Image} from 'react-native'
+import{View,Text, Image, ScrollView, FlatList} from 'react-native'
 import CustomButton from '../../../shared/components/buttons/CustomButton'
 import styles from '../../../../src/features/home/styles/HomeScreenStyles'
 import InputField from '../../../../src/shared/components/input_field/InputField'
@@ -6,6 +6,8 @@ import InputField from '../../../../src/shared/components/input_field/InputField
 export default function HomeScreen(){
     return(
     <View style={styles.container}>
+      <ScrollView  style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}>  
        <View style={styles.topContainer}> 
         <CustomButton icon={
             <Image source={require('../../../../assets/icons/location-icon.png')}
@@ -43,8 +45,13 @@ export default function HomeScreen(){
           style={styles.food}
           resizeMode="contain"/>
         <View style={styles.seeMoreContainer}>
-            <Image source={require('../../../../assets/icons/see-more.png')}/>
-        </View>  
+            <Image source={require('../../../../assets/icons/see-more.png')}
+               style={styles.seeMore} />
+        </View>
+        <Text style={styles.restaurantCount}>396 restaurants around you</Text>
+         
+       </ScrollView>
     </View>
     )
 }
+
