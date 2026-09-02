@@ -1,11 +1,12 @@
-import { View, Text, Image, TouchableOpacity} from 'react-native';
+import { View, Text, Image, TouchableOpacity, Pressable} from 'react-native';
 import { useState, useEffect} from 'react';
 import styles from '../../../../src/features/auth/styles/VerificationScreenStyles';
 import { router } from 'expo-router';
-import CustomButton from '../../../shared/components/buttons/CustomButton';
+import CustomButton from '../../../../src/shared/components/Buttons/CustomButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
 import OTPInput from '../../../shared/components/otp_input/OTPInput';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function VerificationCodeScreen() {
   const { phoneNumber } = useLocalSearchParams();
@@ -28,14 +29,11 @@ export default function VerificationCodeScreen() {
     <View style={styles.container}>
       <SafeAreaView>
       <View style={styles.containerNavigation}>
-        <CustomButton
-          title=""
-          style={styles.backButton}
-          icon={
-             <Image source={require('../../../../assets/icons/back-option.png')}/>
-            }
+        <Pressable style={styles.backButton}
           onPress={() => router.back()}
-        />
+        >
+          <Ionicons name="arrow-back-outline" size={35} style={{opacity:0.7}}/>
+        </Pressable>
         <Text style={styles.text}>We have sent a verification code to</Text>
       </View>
       </SafeAreaView>

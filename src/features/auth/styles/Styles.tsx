@@ -8,9 +8,8 @@ const styles = StyleSheet.create({
 
     },
     skipButtonContainer:{
-        position:'absolute',
-        left:'90%',
-        top:'6%',
+        alignItems:'flex-end',
+        marginTop:50
     },
     top:{
         flex:1,
@@ -22,22 +21,21 @@ const styles = StyleSheet.create({
     },
     countryCode: {
         fontSize: 22,
-        marginRight: 5,
+        marginLeft: -160,
         position: 'absolute',
         zIndex: 1,
-        paddingBottom:17,
-        paddingRight:130
+        marginTop:-20
     },
     inputField:{
         width: '100%',
         fontSize: 22,
-        textAlign: 'center',
         height:59,
         borderWidth:1,
         backgroundColor:'white',
         borderRadius:8,
         marginBottom: 16,
-        paddingLeft:40,
+        paddingLeft:90,
+        paddingBottom:14
     },   
     sendOtpButton:{
         backgroundColor:'black',
@@ -81,12 +79,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         letterSpacing: 0,
         textAlign: 'center',
-        marginLeft: 35,
+        marginLeft: 30,
 
     },
     emailButtonLogo:{
-        position:'absolute',
-        left:'5%'
+        marginLeft:-20
     },
     fbButton:{
         backgroundColor:Color.button,
@@ -102,11 +99,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 24,
         letterSpacing: 0,
-        left:'12%'
-    },
-    facebookButtonLogo:{
-        position:'absolute',
-        left:'10%'
+        paddingLeft:10
     },
     googleButton:{
         width: '50%',
@@ -124,11 +117,10 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         letterSpacing: 0,
         textAlign: 'center',
-        left:'12%'
+        paddingLeft:10
     },
     googleButtonLogo:{
-        position:'absolute',
-        left:'10%'
+        marginLeft:-10
     },
     buttonContainer:{
         flexDirection: "row",
@@ -154,7 +146,15 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         gap:5,
     },
-    
+    skipButton:{
+        backgroundColor:'#00000078',
+        width:65,
+        height:38,
+        borderRadius:20
+    },
+    skipButtonText:{
+        color:'#E5E5E5'
+    },
 })
 export default styles;
 

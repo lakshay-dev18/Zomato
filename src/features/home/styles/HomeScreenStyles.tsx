@@ -1,31 +1,17 @@
 import{StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
+        backgroundColor:'#FFFFFF'
     },
     topContainer:{
         flexDirection:'row',
+        marginBottom:20
     },
     locationLogoButton:{
-        paddingTop: 62,
-        paddingRight: 300,
-        opacity: 1,
-
-    },
-    locationLogo:{
-        width: 14,
-        height: 21,
-    },
-    menuLogo:{
-        width: 27,
-        height: 21,
-        opacity:1,
-    },
-    menuLogoContainer:{
-        position:'absolute',
-        paddingTop:64,
-        left:'85%'
+        paddingTop: 58,
+        paddingLeft:14
     },
     lineLogoContainer:{
         position:'absolute',
@@ -33,75 +19,267 @@ const styles = StyleSheet.create({
         paddingLeft:48
     },
     lineLogo:{
-        width:'250%'
+        marginLeft:5,
+        marginBottom:10,
+        width: '65%',
+        borderBottomWidth: 2,
+        borderBottomColor: '#999',
+        borderStyle: 'dotted',
     },
-    inputFieldContainer:{
+      inputFieldContainer:{
         flexDirection:'row',
+        gap:25,
+        marginBottom:30
     },
     inputField:{
         borderWidth:1,
         borderRadius:8,
         width:'88%',
-        top:'120%',
-        left:'5%',
+        marginTop:15,
+        marginLeft:16,
+        paddingLeft:44,
+        height:43
     },
     inputFieldText:{
-        textAlign:'center'
+        textAlign:'left'
     },
     searchIcon:{
         position:'absolute',
-        top:'148%',
-        left:'8%'
+        marginTop:25,
+        marginLeft:30,
+        opacity: 0.6
     },
-    topRowContainer:{
-        top:'10%'
+    text: {
+        fontSize: 22,
+        marginHorizontal: 12,
+        fontWeight:700,
+        fontFamily:'Segoe UI',
+        marginBottom:10
     },
-    maxIcon:{
-        height:'20%',
-        width:'100%',
-    },
-    discountContainer:{
-        flexDirection:'row',
-        gap:'5%',
-        left:'2%',
-        bottom:'2%',
-    },
-    offerIcon:{
-        width:'45%',
-        borderRadius:5
-    },
-    discountIcon:{
-        width:'45%',
-        borderRadius:5,
-    },
-    text:{
+    restaurantCount: {
+        fontSize: 22,
+        marginTop: 16,
+        marginHorizontal: 20,
         fontFamily: 'Segoe UI',
-        fontSize: 20,
+        fontWeight: 700,
         letterSpacing: 0,
-        left:'2%',
-        top:'2%'
+        marginLeft:10
+
     },
-    food:{
-        top:'4%',
-        width:'100%',
-        height:'27%'
+    maxButton:{
+        borderWidth:0.5,
+        width:55,
+        height:35,
+        marginLeft:10,
+        borderRadius:8,
+        justifyContent:'center'
     },
-    seeMoreContainer:{
-        top:'6%',
-        left:'3%',
+    maxButtonText:{
+        fontSize:12,
+        fontFamily: 'Segoe UI',
+        letterSpacing: 0,
+        fontWeight: 800,
+        textAlign:'center',
     },
-    seeMore:{
-        height:40,
-        width:'95%',
+    shieldCrownLogo:{
+        height:20,
+        width:22,
         resizeMode:'contain'
     },
-    restaurantCount:{
-        fontFamily: 'Segoe UI',
-        fontSize: 20,
-        letterSpacing: 0,
-        top:'7%',
-        left:'4%'
+    proButton:{
+        flexDirection:'row',
+        borderWidth:0.5,
+        width:55,
+        height:35,
+        marginLeft:15,
+        borderRadius:8,
+        justifyContent:'center',
+        paddingTop:8
     },
+    cuisinesButton:{
+        flexDirection:'row',
+        borderWidth:0.5,
+        width:64,
+        height:35,
+        marginLeft:15,
+        borderRadius:8,
+        paddingTop:8,
+        justifyContent:'center',
+        padding:10
+    },
+    caretIcon:{
+        paddingTop:3
+    },
+    popularButton:{
+        flexDirection:'row',
+        borderWidth:0.5,
+        width:60,
+        height:35,
+        marginLeft:15,
+        borderRadius:8,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    offerContainer:{
+        flexDirection:'row',
+        gap:15,
+        marginLeft:12,
+        marginTop: -10,
+    },
+    offerLogo:{
+        resizeMode:"contain",
+        width:'46%',
+        height:200
+    },
+    categoryItem: {
+        alignItems: 'center',      
+        justifyContent: 'center',
+        margin: 4,                 
+        width: 68,
+        marginLeft:18,
+        marginRight:-2                 
+    },
+    categoryCircle: {
+        width: 70,
+        height: 70,        
+        borderRadius: 35,  
+        resizeMode: 'cover',
+    },
+    seeMoreButton:{
+        backgroundColor:'#FFFFFF',
+        borderWidth:0.5,
+        width:'95%',
+        height:30,
+        marginLeft:10,
+        marginTop:20,
+        paddingTop:8,
+        justifyContent:'center',
+        flexDirection:'row',
+        borderRadius:9
+    },
+    seeMoreText:{
+        textAlign:'center',
+        fontFamily: 'Segoe UI',
+        fontWeight: 400,
+        fontSize: 10,
+        letterSpacing: 0,
+    },
+    chevronIcon:{
+        paddingTop:2,
+        paddingLeft:2
+    },
+    restaurantCard: {
+        backgroundColor: '#fff',
+        margin: 10,
+        marginTop:24,
+        borderRadius:20,
+        shadowColor:'#000000',
+        shadowOpacity:0.15,
+        elevation: 4,
+        shadowOffset: { width: 0, height: 8 },
+        shadowRadius:6
+        },
+    restaurantImage: {
+        width: '100%',
+        height: 200,
+        resizeMode: 'cover',
+        borderTopLeftRadius: 20,    
+        borderTopRightRadius: 20,
+    },
+    restaurantName: {
+        fontSize: 16,
+        fontWeight: 400,
+        fontFamily: 'Segoe UI',
+        letterSpacing: 0,
+
+    },
+    restaurantCategory: {
+        fontSize: 11,
+        color: '#3C3636',
+        fontFamily:'Segoe UI'
+    },
+    ratingBadge: {
+        backgroundColor: 'green',
+        borderRadius: 4,
+        width:'15%',
+        height:21,
+        justifyContent:'center',
+        textAlign:'center',
+    },
+    ratingText: {
+        color: '#fff',
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign:'center'
+
+    },
+    priceText: {
+        fontSize: 12,
+        fontWeight:400,
+        fontFamily:'Segoe UI',
+        color: '#333',
+        textAlign:'right',
+    }   ,
+    bottomRow: {
+        flexDirection: 'row',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+    },
+    ecoRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex: 1,
+    },
+    ecoText: {
+        fontSize: 11,
+        color: '#555',
+        marginLeft: 4,
+        flexShrink: 1,
+    },
+    safetyBadge: {
+        paddingHorizontal: 6,
+        paddingVertical: 2,
+    },
+    maxImage:{
+        resizeMode:'cover',
+        width:65,
+        height:32,
+        bottom:5,
+        left:5,
+        borderRadius:6
+    },
+    restaurantInfoRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 10,
+},
+categoryPrice: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+},
+menuIcon:{
+    justifyContent:'space-between',
+    width: 24,
+    height: 22,
+    marginLeft:40,
+    marginTop:64,  
+},
+line:{
+    height: 2,
+    width: '100%',
+    backgroundColor: 'black',
+    borderRadius: 1,
+},
     
-})
-export default styles;
+    
+});export default styles;
+
+
+
+
+
+

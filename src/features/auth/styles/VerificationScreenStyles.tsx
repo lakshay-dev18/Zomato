@@ -15,11 +15,7 @@ const styles = StyleSheet.create({
   },
 
   backButton: {
-    width: 35,
-    height: 35,
-    backgroundColor: 'transparent',
-    paddingTop:30
-
+    marginTop:26
   },
 
   text: {
@@ -34,7 +30,7 @@ const styles = StyleSheet.create({
   textNumber: {
     fontFamily: 'Segoe UI',
     fontWeight: '400',
-    fontSize: 15,
+    fontSize: 16,
     lineHeight: 21,
     letterSpacing: 0,
     textAlign: 'center',
@@ -45,15 +41,15 @@ const styles = StyleSheet.create({
     height:35,
     borderWidth:0.5,
     borderRadius:3,
-    color:Color.background
+    color:Color.background,
+    justifyContent:'center'
   },
   containerNumber: {
     paddingHorizontal: 25,
-    marginTop: 6,
     paddingLeft: 48,
     },
     otpBoxContainer: {
-        marginTop: -32,
+        marginTop: -10,
         paddingHorizontal:80
     },
     otpTimer:{

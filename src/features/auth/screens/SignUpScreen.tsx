@@ -2,12 +2,13 @@ import{View, Text, TextInput, Image, } from 'react-native'
 import styles from '../styles/Styles'
 import { LinearGradient } from 'expo-linear-gradient';
 import Color from '../../../shared/theme/Colors';
-import CustomButton from '../../../shared/components/buttons/CustomButton';
+import CustomButton from '../../../../src/shared/components/Buttons/CustomButton';
 import { router } from 'expo-router';
 import{useState} from 'react'
+import { Ionicons } from '@expo/vector-icons';
 
 export default function SignUp(){
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('9010858965');
     return(
         <LinearGradient
             colors={[Color.primary, Color.secondary]}
@@ -16,18 +17,16 @@ export default function SignUp(){
             style={styles.container}
         >
             <View style={styles.skipButtonContainer}>
-                <CustomButton icon={
-                    <Image source={require('../../../../assets/icons/skip.png')}/>
-                }
-                onPress={()=> router.push({
-                    pathname:'/tabs'
-                })}/>
+                <CustomButton title='Skip'
+                    onPress={()=> router.push({
+                        pathname:'/tabs'
+                    })}
+                    style={styles.skipButton} textStyle={styles.skipButtonText}
+                />
             </View>
             <View style={styles.top} />
             <View style={styles.phoneContainer}>
-                {phoneNumber.length > 0 && (
                     <Text style={styles.countryCode}>+91</Text>
-                )}
                 <TextInput
                     placeholder="Enter your Number"
                     style={styles.inputField
@@ -56,20 +55,17 @@ export default function SignUp(){
 
             <CustomButton title='Continue with Email' style={styles.emailButton} textStyle={styles.emailButtonText} 
                 icon={
-                    <Image source={require('../../../../assets/icons/email-Icon.png')}
-                        style={styles.emailButtonLogo}/>
+                        <Ionicons name='mail-outline' size={40} style={styles.emailButtonLogo} />                    
                 }/>
 
             <View style={styles.buttonContainer}>  
                 <CustomButton title='Facebook' style={styles.fbButton} textStyle={styles.fbButtonText}
                     icon={
-                        <Image source={require('../../../../assets/icons/facebook-icon.png')}
-                            style={styles.facebookButtonLogo}/>
+                        <Ionicons name='logo-facebook' size={35}/>
                     }/>
                 <CustomButton title='Google' style={styles.googleButton} textStyle={styles.googleButtonText}
                 icon={
-                    <Image source={require('../../../../assets/icons/google-icon.png')}
-                        style={styles.googleButtonLogo}/>
+                    <Ionicons name='logo-google' size={35} color={'red'} style={styles.googleButtonLogo}/>
                 }/>
             </View> 
 
