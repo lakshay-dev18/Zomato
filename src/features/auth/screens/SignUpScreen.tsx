@@ -2,7 +2,7 @@ import{View, Text, TextInput, Image, } from 'react-native'
 import styles from '../styles/Styles'
 import { LinearGradient } from 'expo-linear-gradient';
 import Color from '../../../shared/theme/Colors';
-import CustomButton from '../../../../src/shared/components/Buttons/CustomButton';
+import CustomButton from '../../../shared/components/buttons/CustomButton';
 import { router } from 'expo-router';
 import{useState} from 'react'
 import { Ionicons } from '@expo/vector-icons';
@@ -29,8 +29,7 @@ export default function SignUp(){
                     <Text style={styles.countryCode}>+91</Text>
                 <TextInput
                     placeholder="Enter your Number"
-                    style={styles.inputField
-                    }
+                    style={styles.inputField}
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
                     maxLength={10}
@@ -40,7 +39,7 @@ export default function SignUp(){
 
             <CustomButton title='Send OTP'
                 onPress={() => router.push({
-                    pathname: './auth/verificationCode',
+                    pathname: '/auth/verificationCode',
                     params: { phoneNumber: phoneNumber, },
                     })
                 }
@@ -64,9 +63,9 @@ export default function SignUp(){
                         <Ionicons name='logo-facebook' size={35}/>
                     }/>
                 <CustomButton title='Google' style={styles.googleButton} textStyle={styles.googleButtonText}
-                icon={
-                    <Ionicons name='logo-google' size={35} color={'red'} style={styles.googleButtonLogo}/>
-                }/>
+                    icon={
+                        <Ionicons name='logo-google' size={35} color={'red'} style={styles.googleButtonLogo}/>
+                    }/>
             </View> 
 
             <View style={styles.linkContainer}>

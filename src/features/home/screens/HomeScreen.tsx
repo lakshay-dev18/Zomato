@@ -1,10 +1,11 @@
 import{View,Text, Image, Pressable, FlatList} from 'react-native'
-import{useState, useEffect} from 'react'
+import{useState} from 'react'
 import styles from '../../../../src/features/home/styles/HomeScreenStyles'
 import InputField from '../../../../src/shared/components/input_field/InputField'
 import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
-import PressableButton from '../../../../src/features/home/components/pressableButtons';
+import PressableButton from '../../../shared/components/pressable_button/pressableButtons';
+import fetchApi from '../../../../src/shared/components/api/api';
 
 
 type Category= { id: number; name: string; image: string }
@@ -15,27 +16,21 @@ export default function HomeScreen(){
     const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
     const router = useRouter();
 
-    useEffect(() => {
+    const loadData = async () => {    
         Promise.all([
-            fetch("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/categories").then(res => res.json()),
-            fetch("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/restaurants").then(res => res.json()),
+            fetchApi("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/categories"),
+            fetchApi("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/restaurants"),
         ])
         .then(([categoriesData, restaurantsData]) => {
         setCategories(categoriesData);
         setRestaurants(restaurantsData);
         })
-        .catch(error => console.log(error));
-    }, []);
-
+    }    
+    loadData();
+    
     return(
     <View style={styles.container}>
-      <FlatList
-      data={categories}
-      keyExtractor={(item) => item.id.toString()}
-      numColumns={4}
-      ListHeaderComponent={  
-       <View> 
-       <View style={styles.topContainer}> 
+      <View style={styles.topContainer}> 
             <Pressable style={styles.locationLogoButton}>
                 <Ionicons name='location-outline' size={25}/>
             </Pressable>
@@ -55,8 +50,16 @@ export default function HomeScreen(){
             style={styles.inputField}
             text={styles.inputFieldText}/>    
        </View>
+       <View>
+        <PressableButton />  
+       </View>
+      <FlatList
+      data={categories}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={4}
+      ListHeaderComponent={  
+       <View> 
        
-        <PressableButton />
         <View style={styles.offerContainer}>
             <Image source={require('../../../../assets/icons/homeScreenIcons/offer.png')} style={styles.offerLogo}/>
             <Image source={require('../../../../assets/icons/homeScreenIcons/discounts.png')} style={styles.offerLogo}/>
@@ -94,8 +97,8 @@ export default function HomeScreen(){
 
                 </View>
                 <View style={styles.categoryPrice}>
-                <Text style={styles.restaurantCategory}>{item.category}</Text>
-                <Text style={styles.priceText}>{item.priceForOne} for one</Text>
+                    <Text style={styles.restaurantCategory}>{item.category}</Text>
+                    <Text style={styles.priceText}>{item.priceForOne} for one</Text>
                 </View>
                 
 
@@ -108,6 +111,7 @@ export default function HomeScreen(){
 
                 
                 <View style={styles.safetyBadge}>
+                 <Image source={require('../../../../assets/icons/homeScreenIcons/arrow.png')} style={styles.arrowImage}/>
                  <Image source={require('../../../../assets/icons/homeScreenIcons/max-safety.png')} style={styles.maxImage}/>
              </View>
              

@@ -1,3 +1,6 @@
-import SignUpScreen from '../../src/features/auth/screens/SignUpScreen';
+// import SignUpScreen from '../../src/features/auth/screens/SignUpScreen';
 
-export default SignUpScreen;
+// export default SignUpScreen;
+import SplashScreen from '../../src/features/start/StartScreen';
+
+export default SplashScreen;

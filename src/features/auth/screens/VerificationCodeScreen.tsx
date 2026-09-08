@@ -2,7 +2,6 @@ import { View, Text, Image, TouchableOpacity, Pressable} from 'react-native';
 import { useState, useEffect} from 'react';
 import styles from '../../../../src/features/auth/styles/VerificationScreenStyles';
 import { router } from 'expo-router';
-import CustomButton from '../../../../src/shared/components/Buttons/CustomButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
 import OTPInput from '../../../shared/components/otp_input/OTPInput';
@@ -15,7 +14,7 @@ export default function VerificationCodeScreen() {
   useEffect(() => {
 
   if (timer === 0) {
-    return; // STOP when timer reaches 0
+    return; 
   }
 
   const interval = setInterval(() => {
@@ -43,7 +42,7 @@ export default function VerificationCodeScreen() {
       <View style={styles.otpBoxContainer}>
         <OTPInput boxStyle={styles.otpBox}/>
       </View>
-       {/* TIMER / RESEND BUTTON */}
+       
       <View style={styles.otpTimerTop}/>      
        <View style={styles.otpTimer}>      
          {timer > 0 && (

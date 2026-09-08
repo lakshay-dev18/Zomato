@@ -1,6 +1,6 @@
 import { Pressable, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import styles from '../../../../src/features/home/styles/HomeScreenStyles';
+import styles from '../../../features/home/styles/HomeScreenStyles';
 
 type ButtonStyleKey = "maxButton" | "proButton" | "cuisinesButton" | "popularButton";
 
