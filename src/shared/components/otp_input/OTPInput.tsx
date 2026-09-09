@@ -28,7 +28,7 @@ export default function VerificationScreen({boxStyle}:otp) {
         style={{ opacity: 0, height: 1, width: 1 ,}}
         returnKeyType="done"
         onSubmitEditing={() => {
-        router.push('/tabs');
+        router.push('/home');
        }}
       />
 

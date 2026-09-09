@@ -1,33 +1,58 @@
-import{View,Text, Image, Pressable, FlatList} from 'react-native'
-import{useState} from 'react'
+import{View,Text, Image, Pressable, FlatList, ActivityIndicator} from 'react-native'
 import styles from '../../../../src/features/home/styles/HomeScreenStyles'
 import InputField from '../../../../src/shared/components/input_field/InputField'
 import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import PressableButton from '../../../shared/components/pressable_button/pressableButtons';
-import fetchApi from '../../../../src/shared/components/api/api';
+import {fetchCategories} from '../../../../src/features/home/api/CategoryApi'
+import {fetchRestaurants} from '../../../../src/features/home/api/RestaurantsApi'
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react'
 
 
-type Category= { id: number; name: string; image: string }
-type Restaurant = { id: number; name: string; category: string; rating: number; priceForOne: number; ecoMessage: string; maxSafety: boolean; image: string; route: string };
 
 export default function HomeScreen(){
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
     const router = useRouter();
+    const[search,setSearch] = useState('')
+    const loadData = async () => {
+        const [categoriesData, restaurantsData] = await Promise.all([
+            fetchCategories(),
+            fetchRestaurants(),
+        ]);
+        return { categories: categoriesData, restaurants: restaurantsData };
+    };    
 
-    const loadData = async () => {    
-        Promise.all([
-            fetchApi("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/categories"),
-            fetchApi("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/restaurants"),
-        ])
-        .then(([categoriesData, restaurantsData]) => {
-        setCategories(categoriesData);
-        setRestaurants(restaurantsData);
-        })
-    }    
-    loadData();
+    const{data, isLoading, isError} = useQuery(
+        {
+            queryKey:['fetchData'],
+            queryFn: loadData,
+        }
+    )
+    if(isLoading){return <View style={styles.queryContainer}>
+        <View style={styles.queryText}>
+            <ActivityIndicator size={20}/>
+        </View>
+        </View>
+    }
+    if(isError){return <Text style={styles.queryText}>There is some error in getting data</Text>}
     
+    function Filtered(){
+        let searching = data?.categories ?? [];
+        if (search.trim() !== ''){
+            searching = searching.filter((item)=> item.name.toLowerCase().includes (search.toLowerCase()))
+        }
+        return searching;
+    }
+    const category = Filtered();
+    
+    function FilteredRestaurants(){
+        let searchingRestaurants = data?.restaurants ?? [];
+        if (search.trim() !== ''){
+            searchingRestaurants = searchingRestaurants.filter((item)=> item.name.toLowerCase().includes (search.toLowerCase()))
+        }
+        return searchingRestaurants;
+    }
+    const restaurant = FilteredRestaurants();
     return(
     <View style={styles.container}>
       <View style={styles.topContainer}> 
@@ -48,13 +73,15 @@ export default function HomeScreen(){
          <Ionicons name='search' size={22} color='red' style={styles.searchIcon}/> 
         <InputField title={'Restaurant name, cuisine, or a dish...'}
             style={styles.inputField}
-            text={styles.inputFieldText}/>    
+            text={styles.inputFieldText}
+            value={search}
+            onChangeText={setSearch}/>    
        </View>
        <View>
         <PressableButton />  
        </View>
       <FlatList
-      data={categories}
+      data={category}
       keyExtractor={(item) => item.id.toString()}
       numColumns={4}
       ListHeaderComponent={  
@@ -82,7 +109,7 @@ export default function HomeScreen(){
         <Text style={styles.restaurantCount}>396 restaurants around you</Text>
 
         <FlatList
-            data={restaurants}
+            data={restaurant}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
                 <Pressable style={styles.restaurantCard}

@@ -13,6 +13,18 @@ const menuItems = [
   },
   {
     id: "2",
+    name: "Chicken",
+    price: 350,
+    isVeg: false,
+    rating: 5,
+    ratingCount: 16,
+    tag: "Must Try",
+    category: "Veg preparation",
+    description: "Spring mix, plant based, organic",
+    image: require('../../../../assets/icons/eatHealthyScreenIcons/pallavi-biryani.png')
+  },
+  {
+    id: "3",
     name: "Spring Veg Plater",
     price: 350,
     isVeg: true,
@@ -22,6 +34,18 @@ const menuItems = [
     category: "Veg preparation",
     description: "Spring mix, plant based, organic",
     image: require('../../../../assets/icons/eatHealthyScreenIcons/spring-veg-plater.png')
+  },
+  {
+    id: "4",
+    name: "Fish",
+    price: 350,
+    isVeg: false,
+    rating: 5,
+    ratingCount: 16,
+    tag: "Must Try",
+    category: "Veg preparation",
+    description: "Spring mix, plant based, organic",
+    image: require('../../../../assets/icons/eatHealthyScreenIcons/pallavi-biryani.png')
   },
   
 ];

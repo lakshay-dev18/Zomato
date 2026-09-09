@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     restaurantCard: { backgroundColor: Color.card, margin: 10, marginTop:24, borderRadius:20, shadowColor:Color.resend, shadowOpacity:0.15, elevation: 4, shadowOffset: { width: 0, height: 8 }, shadowRadius:6 },
     restaurantImage: { width: '100%', height: 200, resizeMode: 'cover', borderTopLeftRadius: 20, borderTopRightRadius: 20, },
     restaurantName: { fontSize: 16, fontWeight: 400, fontFamily: 'Segoe UI', letterSpacing: 0, },
-    restaurantCategory: { fontSize: 11, color: Color.category, fontFamily:'Segoe UI' },
+    restaurantCategory: { fontSize: 11, color: Color.category, fontFamily:'Segoe UI' ,},
     ratingBadge: { backgroundColor: 'green', borderRadius: 4, width:'15%', height:21, justifyContent:'center', textAlign:'center', },
     ratingText: { color: Color.card, fontSize: 12, fontWeight: 'bold', textAlign:'center' },
     priceText: { fontSize: 12, fontWeight:400, fontFamily:'Segoe UI', color: '#333', textAlign:'right', }   ,
@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
     categoryPrice: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, },
     menuIcon:{ justifyContent:'space-between', width: 24, height: 22, marginLeft:40, marginTop:64, },
     line:{ height: 2, width: '100%', backgroundColor: 'black', borderRadius: 1, },
-    arrowImage:{width:18, height:18}
-    
-    
+    arrowImage:{width:18, height:18},
+    queryText:{justifyContent:'center', textAlign:'center', },
+    queryContainer:{justifyContent:'center', textAlign:'center', marginTop:'100%'}
 });export default styles;
 
 

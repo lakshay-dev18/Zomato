@@ -1,7 +1,6 @@
 import{View, Text, Pressable, Image, ImageBackground, FlatList, ActivityIndicator} from 'react-native'
-import{useState} from 'react'
+import{useState, useEffect} from 'react'
 import { Ionicons } from '@expo/vector-icons';
-import CustomButton from '../../../shared/components/buttons/CustomButton';
 import SwitchButton from '../../../../src/shared/components/switch_button/SwitchButton';
 import InputField from '../../../shared/components/input_field/InputField';
 import menuItems from "../data/data";
@@ -11,6 +10,18 @@ import { useQuery } from '@tanstack/react-query';
 import SelectDishScreen from '../../../../src/features/select-dish/screens/SelectDishScreen';
 import OrderPlacedScreen from '../../../../src/features/order/screens/OrderPlacedScreen';
 
+type MenuItem = {
+  id: string;
+  name: string;
+  price: number;
+  isVeg: boolean;
+  rating: number;
+  ratingCount: number;
+  tag: string;
+  category: string;
+  description: string;
+  image: any;
+};
 
 export default function EatHealthyScreen(){
     const[active,setactive]=useState('DELIVERY')
@@ -18,11 +29,24 @@ export default function EatHealthyScreen(){
     const [modalVisible, setModalVisible] = useState(false);
     const [modalorderVisible, setModalorderVisible] = useState(false);
     const [quantity, setQuantity] = useState(0)
+    const [filterinfo, setFilter] = useState<MenuItem[]>([]);
 
-  const fetchMenuItems = async () => {
+    const filteredData = filterinfo.filter((user) => user.isVeg === true);
+    const [search, setSearch] = useState<string>('');
+      
+    
+    const fetchMenuItems = async () => {
       return menuItems;
     };
 
+    useEffect(() => {
+      const loadData = async () => {
+      const data = await fetchMenuItems();
+        setFilter(data);
+      };
+      loadData();
+      }, []);
+    
     const { data, isLoading, isError } = useQuery({
       queryKey: ['menuItems'],
       queryFn: fetchMenuItems,
@@ -44,10 +68,26 @@ export default function EatHealthyScreen(){
       );
     }
 
+    function Conditioning(){
+      let result = data ?? [];
+      if  (menuactive === 'Healthy'){return filteredData};
+      if (search.trim() !== '') {
+        result = result.filter((item) =>
+            item.name.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+      if(active==='DELIVERY'){return data}
+      if(active==='DINING'){return filteredData}
+      
+      return result;
+    }
+
+    const filteredRestaurants = Conditioning();
+    
    return( 
     <View style={styles.container}>
       <FlatList
-            data={data}
+            data={filteredRestaurants}
             keyExtractor={(item) => item.id.toString()}
             ListHeaderComponent={ 
       <View>        
@@ -80,12 +120,16 @@ export default function EatHealthyScreen(){
 
       </View>
       <View style={styles.buttonGroup}>
-        <CustomButton title='DELIVERY' onPress={()=>setactive('DELIVERY')}
-        style={active==='DELIVERY'?styles.activeDelivery:styles.disableDelivery}
-        textStyle={active==='DELIVERY'?styles.activeTextDelivery:styles.disableTextDelivery}
-        />
-        <CustomButton title='DINING' style={styles.disableDining} textStyle={styles.disableTextDelivery}  />
-        <CustomButton title='REVIEWS' style={styles.disableDining} textStyle={styles.disableTextDelivery} />
+        
+        <Pressable onPress={()=>setactive('DELIVERY')}>
+          <Text style={active==='DELIVERY'?styles.activeTab:styles.disableTab}>DELIVERY</Text>
+        </Pressable>
+        <Pressable onPress={()=>setactive('DINING')}>
+          <Text style={active==='DINING'?styles.activeTab:styles.disableTab}>DINING</Text>
+        </Pressable>
+        <Pressable onPress={()=>setactive('REVIEWS')}>
+          <Text style={active==='REVIEWS'?styles.activeTab:styles.disableTab}>REVIEWS</Text>
+        </Pressable>
       </View>
       <Image source={require('../../../../assets/icons/eatHealthyScreenIcons/mode-time-offer.png')} style={styles.modeIcon}/>
 
@@ -94,20 +138,25 @@ export default function EatHealthyScreen(){
         <Text style={styles.bikeIconText}>₹25 distance charge</Text> 
       </View>        
     <View style={styles.menuButtonGroup}>
-        <CustomButton title='Full Menu' style={styles.disableDining} textStyle={styles.disableTextDelivery} />
-
+        <Pressable onPress={()=>setmenuactive('Full Menu')} style={menuactive === 'Full Menu'? styles.active : styles.disable}>
+           <Text style={menuactive === 'Full Menu'?styles.activeText :styles.disableText}>Full Menu</Text> 
+           {menuactive === 'Full Menu' && (
+            <View style={styles.underline} />
+          )}   
+        </Pressable>   
+         
         <Pressable
         onPress={() => setmenuactive('Healthy')}
-        style={menuactive === 'Healthy' ? styles.activeHealthy : styles.disableHealthy}
+        style={menuactive === 'Healthy' ? styles.active : styles.disable}
         >
-        <Text style={menuactive === 'Healthy' ? styles.activeTextHealthy : styles.disableTextHealthy}>
+        <Text style={menuactive === 'Healthy' ? styles.activeText : styles.disableText}>
           Healthy
         </Text>
 
-      {menuactive === 'Healthy' && (
-        <View style={styles.underline} />
-      )}
-</Pressable>
+        {menuactive === 'Healthy' && (
+          <View style={styles.underline} />
+        )}
+        </Pressable>
     </View>
     <View style={styles.switchContainer}>
      <View style={styles.switchButtonContainer}>
@@ -116,7 +165,7 @@ export default function EatHealthyScreen(){
      </View>
       <View style={styles.searchFieldContainer}>
         <Ionicons name='search' size={20} color={'red'} style={styles.searchIcon}/> 
-       <InputField title='Search' style={styles.searchField} text={styles.searchFieldText}/>
+       <InputField title='Search' style={styles.searchField} text={styles.searchFieldText} value={search} onChangeText={setSearch}/>
       </View> 
     </View>   
 

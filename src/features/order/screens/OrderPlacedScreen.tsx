@@ -4,7 +4,7 @@ import sections from '../../../../src/features/order/order-data/OrderData';
 import styles from '../../../../src/features/order/styles/OrderPlacedScreenStyles';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from '@tanstack/react-query';
-
+import { router, useRouter } from 'expo-router';
 
 type SectionType =
   | 'delivery'
@@ -286,7 +286,7 @@ if (isError) {
                 <Image source={require('../../../../assets/icons/placeOrderScreenIcons/g-pay.png')} style={styles.gpayIcon}/>
                 <Text style={styles.payText}>PAY USING</Text>
                 <Ionicons name='caret-up-outline' size={9} style={styles.payIcon}/>
-                <Pressable style={styles.orderButton}>
+                <Pressable style={styles.orderButton} onPress={()=>router.push('/orderPlaced/OrderPlaced')}>
                   <Text style={styles.buttonPrice}>₹334.00</Text>
                   <Text style={styles.buttonText}>Place Order</Text>
                   <Text style={styles.buttonSecondText}>TOTAL</Text>

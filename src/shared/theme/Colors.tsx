@@ -45,6 +45,7 @@ const Color = {
     addBText:'#FFE4E1',
     underline:'#C00808',
     
-    seller:'#FFE5E5'
+    seller:'#FFE5E5',
+    disableMenu:'#A4A0A0'
 }
 export default Color;

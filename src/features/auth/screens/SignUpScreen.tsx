@@ -1,4 +1,4 @@
-import{View, Text, TextInput, Image, } from 'react-native'
+import{View, Text, TextInput, TouchableOpacity, } from 'react-native'
 import styles from '../styles/Styles'
 import { LinearGradient } from 'expo-linear-gradient';
 import Color from '../../../shared/theme/Colors';
@@ -17,12 +17,9 @@ export default function SignUp(){
             style={styles.container}
         >
             <View style={styles.skipButtonContainer}>
-                <CustomButton title='Skip'
-                    onPress={()=> router.push({
-                        pathname:'/tabs'
-                    })}
-                    style={styles.skipButton} textStyle={styles.skipButtonText}
-                />
+           <TouchableOpacity onPress={()=>router.push('/home')} >
+            <Text style={styles.skipButtonText}>Skip</Text>
+           </TouchableOpacity>
             </View>
             <View style={styles.top} />
             <View style={styles.phoneContainer}>
