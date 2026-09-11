@@ -2,9 +2,10 @@ import{View,Text, Image, Pressable, FlatList, Modal} from 'react-native'
 import{useState, useEffect, } from 'react'
 import styles from '../../../../src/features/select-dish/styles/SelectDishScreenStyles'
 import addOns from '../../../../src/features/select-dish/Staticdata/data'
-import SimpleCheckbox from '../../../../src/shared/components/check_box/checkBox'
 import { Ionicons } from '@expo/vector-icons'
-
+import FilteredHeaderData from '../components/FilteredHeaderData'
+import FilteredData from '../components/FilteredData'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 interface Props {
   visible: boolean;
@@ -34,49 +35,8 @@ export default function SelectDishScreen({ visible, onClose, onAdd}: Props){
             data={filtereddata}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item)=> item.id.toString()}
-            ListHeaderComponent={
-            <View> 
-                <View style={{ position: 'relative' }}>
-                    <Image
-                        source={require('../../../../assets/icons/eatHealthyScreenIcons/plant-protien-bowl.png')}
-                        style={styles.plantImage}
-                    />
-                </View>
-                <Text style={styles.plantText}>Plant Protien Bowl</Text>
-                <View style={styles.iconContainer}>
-                    <Image source={require('../../../../assets/icons/eatHealthyScreenIcons/rating.png')} style={styles.ratingIcon}/> 
-                    <Pressable style={styles.bestsellerButton}>
-                        <Text style={styles.bestsellerText}>Bestseller</Text>
-                    </Pressable>
-                </View> 
-                <Text style={styles.vegText}>[Veg preparation] Spring mix, plant based,{'\n'} organic... </Text>
-                <Pressable style={styles.readButton}>
-                 <Text style={styles.readButtonText}>read more</Text>
-                </Pressable>
-                <View style={styles.lineIcon}/> 
-                <Text style={styles.addText}>Add On</Text>
-                <Text style={styles.selectionText}>You can choose up to 4 options</Text>
-            </View>
-            }
-            renderItem={({item})=>(
-                <View style={styles.dataContainer}>
-                    <View style={styles.vegIconContainer}>
-                        <Image source={require('../../../../assets/icons/selectDishScreenIcons/veg-icon.png')} style={styles.vegIcon}/>   
-                        <Text style={styles.nameText}>{item.name}</Text>
-                    </View>
-                    <View style={styles.priceContainer}>
-                        <Text style={styles.priceText}>₹{item.price}</Text>
-                        <SimpleCheckbox
-                            onToggle={(checked) => {
-                                if (checked) {
-                                  setPrice(item.price); 
-                                } else {
-                                  setPrice(0);
-                                }
-                        }}/>
-                    </View>
-                </View>
-            )}
+            ListHeaderComponent={<FilteredHeaderData/>}
+            renderItem={({item})=>(<FilteredData item={item} setPrice={(newPrice) => setPrice(newPrice)} />)}
             ListFooterComponent={
                 <View>
                     <View style={styles.filterContainer}>   
@@ -86,25 +46,7 @@ export default function SelectDishScreen({ visible, onClose, onAdd}: Props){
                 <FlatList 
                 data={filteredUsers}
                 keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item})=>(
-                    <View style={styles.dataContainer}>
-                        <View style={styles.vegIconContainer}>
-                            <Image source={require('../../../../assets/icons/selectDishScreenIcons/veg-icon.png')} style={styles.vegIcon}/>   
-                            <Text style={styles.nameText}>{item.name}</Text>
-                        </View>
-                        <View style={styles.priceContainer}>
-                            <Text style={styles.priceText}>₹{item.price}</Text>
-                            <SimpleCheckbox
-                                onToggle={(checked) => {
-                                if (checked) {
-                                  setPrice(item.price); 
-                                } else {
-                                  setPrice(0);
-                                }
-                            }}/>
-                        </View> 
-                    </View>
-                )}
+                renderItem={({item})=>(<FilteredData item={item} setPrice={(newPrice) => setPrice(newPrice)} />)}
                 />
                 
             </View>    
@@ -112,7 +54,8 @@ export default function SelectDishScreen({ visible, onClose, onAdd}: Props){
        /> 
        </View>
        </View>
-       <View style={styles.counterContainer}>
+              <SafeAreaView>
+                <View style={styles.counterContainer}>
                     <Pressable
                     onPress={()=>setCounter(counter-1)}>
                         <Text style={styles.counterButton}>-</Text>
@@ -127,6 +70,7 @@ export default function SelectDishScreen({ visible, onClose, onAdd}: Props){
                         <Text style={styles.addButtonText}>Add ₹{price}</Text>
                     </Pressable>
                 </View>
+              </SafeAreaView>
        </Modal> 
     )
 }

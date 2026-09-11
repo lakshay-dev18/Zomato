@@ -9,7 +9,7 @@ export default function OrderPlacedScreen(){
             <Pressable onPress={()=>router.back()} style={styles.back}>
                 <Ionicons name='arrow-back-outline' size={30}/>
             </Pressable>
-               <Text style = {styles.congratsText}> Congratulations Order Placed</Text>
+               <Text style = {styles.congratsText}> Congratulations Order Placed😊</Text>
         </View>
     )
 }

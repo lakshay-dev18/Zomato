@@ -1,4 +1,4 @@
-import{View, Text, Pressable, Image, ImageBackground, FlatList, ActivityIndicator} from 'react-native'
+import{View, Text, Pressable, Image, ImageBackground, FlatList, ActivityIndicator, TouchableOpacity} from 'react-native'
 import{useState, useEffect} from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import SwitchButton from '../../../../src/shared/components/switch_button/SwitchButton';
@@ -9,6 +9,7 @@ import { router} from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import SelectDishScreen from '../../../../src/features/select-dish/screens/SelectDishScreen';
 import OrderPlacedScreen from '../../../../src/features/order/screens/OrderPlacedScreen';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type MenuItem = {
   id: string;
@@ -25,7 +26,7 @@ type MenuItem = {
 
 export default function EatHealthyScreen(){
     const[active,setactive]=useState('DELIVERY')
-    const[menuactive,setmenuactive]=useState('Healthy')
+    const[menuactive,setmenuactive]=useState('Full Menu')
     const [modalVisible, setModalVisible] = useState(false);
     const [modalorderVisible, setModalorderVisible] = useState(false);
     const [quantity, setQuantity] = useState(0)
@@ -209,6 +210,12 @@ export default function EatHealthyScreen(){
   </View>
 )}
   /> 
+  <SafeAreaView>
+  
+  <TouchableOpacity style={quantity!==0?styles.menuContainer : styles.bottomContainer}>
+    <Ionicons name='menu-outline' color={'#FFFFFF'} size={20}/>
+    <Text style={styles.bottomText}>Menu</Text>
+  </TouchableOpacity>
   <Image source={require('../../../../assets/icons/eatHealthyScreenIcons/30_off.png')} style={styles.offIcon}/>
   {quantity===0? (
     null
@@ -227,6 +234,7 @@ export default function EatHealthyScreen(){
     </View>
   )
 }  
+    </SafeAreaView>
 
     <SelectDishScreen
           visible={modalVisible}

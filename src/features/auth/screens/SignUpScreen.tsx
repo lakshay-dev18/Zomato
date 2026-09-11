@@ -1,15 +1,27 @@
-import{View, Text, TextInput, TouchableOpacity, } from 'react-native'
+import{View, Text, TextInput, TouchableOpacity, Pressable, TouchableWithoutFeedback, Keyboard} from 'react-native'
 import styles from '../styles/Styles'
 import { LinearGradient } from 'expo-linear-gradient';
 import Color from '../../../shared/theme/Colors';
 import CustomButton from '../../../shared/components/buttons/CustomButton';
 import { router } from 'expo-router';
-import{useState} from 'react'
+import{useCallback, useState} from 'react'
 import { Ionicons } from '@expo/vector-icons';
+import { useFocusEffect } from 'expo-router';
 
 export default function SignUp(){
-    const [phoneNumber, setPhoneNumber] = useState('9010858965');
+    const [phoneNumber, setPhoneNumber] = useState('+91 ');
+    useFocusEffect(
+        useCallback(() => {
+            setPhoneNumber('');
+        }, [])
+    );
+
+    const KeyboardRemove = ()=>{
+        Keyboard.dismiss();
+        
+    }
     return(
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient
             colors={[Color.primary, Color.secondary]}
             start={{ x: 0, y: 0 }}
@@ -23,14 +35,15 @@ export default function SignUp(){
             </View>
             <View style={styles.top} />
             <View style={styles.phoneContainer}>
-                    <Text style={styles.countryCode}>+91</Text>
                 <TextInput
                     placeholder="Enter your Number"
                     style={styles.inputField}
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
-                    maxLength={10}
+                    maxLength={14}
                     keyboardType="phone-pad"
+                    onFocus={()=>{if(phoneNumber === ''){ setPhoneNumber('+91 ')}} 
+                    }
                 />
             </View>
 
@@ -54,16 +67,16 @@ export default function SignUp(){
                         <Ionicons name='mail-outline' size={40} style={styles.emailButtonLogo} />                    
                 }/>
 
-            <View style={styles.buttonContainer}>  
-                <CustomButton title='Facebook' style={styles.fbButton} textStyle={styles.fbButtonText}
-                    icon={
-                        <Ionicons name='logo-facebook' size={35}/>
-                    }/>
-                <CustomButton title='Google' style={styles.googleButton} textStyle={styles.googleButtonText}
-                    icon={
-                        <Ionicons name='logo-google' size={35} color={'red'} style={styles.googleButtonLogo}/>
-                    }/>
-            </View> 
+            <View style={styles.rowButton}>
+                <Pressable style={styles.facebookContainer}>
+                    <Ionicons name='logo-facebook' size={35} style={styles.Logo}/>
+                    <Text style={styles.facebook}>Facebook</Text>
+                </Pressable>
+                <Pressable style={styles.googleContainer}>
+                    <Ionicons name='logo-google' size={35} color={'red'} style={styles.Logo}/>
+                    <Text style={styles.google}>Google</Text>
+                </Pressable>
+            </View>
 
             <View style={styles.linkContainer}>
                 <Text style={styles.linkContainerText}>By continuing, you agree to our</Text>
@@ -74,6 +87,7 @@ export default function SignUp(){
                 <Text style={styles.link}> Content Policy</Text>
             </View>           
         </LinearGradient>
+        </TouchableWithoutFeedback>        
     )
 }
  

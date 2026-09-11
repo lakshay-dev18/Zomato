@@ -4,7 +4,7 @@ import sections from '../../../../src/features/order/order-data/OrderData';
 import styles from '../../../../src/features/order/styles/OrderPlacedScreenStyles';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from '@tanstack/react-query';
-import { router, useRouter } from 'expo-router';
+import { router} from 'expo-router';
 
 type SectionType =
   | 'delivery'

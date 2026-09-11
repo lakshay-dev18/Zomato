@@ -16,7 +16,7 @@ export default function SimpleCheckbox({ onToggle }: { onToggle: (checked: boole
         style={[styles.box, isChecked && styles.boxChecked]}
         onPress={handlePress}
       >
-        {isChecked && <Text style={{ color: 'white' }}>✓</Text>}
+        {isChecked && <Text style={{ color: 'white', paddingLeft:2, paddingBottom:3 }}>✓</Text>}
       </TouchableOpacity>
     </View>
   );

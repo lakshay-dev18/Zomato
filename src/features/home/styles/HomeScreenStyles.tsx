@@ -2,13 +2,13 @@ import{StyleSheet} from 'react-native'
 import Color from '../../../../src/shared/theme/Colors'
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor:Color.button },
+    container: {  backgroundColor:Color.button },
     topContainer:{ flexDirection:'row', marginBottom:20 },
     locationLogoButton:{ paddingTop: 58, paddingLeft:14 },
     lineLogoContainer:{ position:'absolute', paddingTop:65, paddingLeft:48 },
     lineLogo:{ marginLeft:5, marginBottom:10, width: '65%', borderBottomWidth: 2, borderBottomColor: Color.border, borderStyle: 'dotted', },
     inputFieldContainer:{ flexDirection:'row', gap:25, marginBottom:30 },
-    inputField:{ borderWidth:1, borderRadius:8, width:'88%', marginTop:15, marginLeft:16, paddingLeft:44, height:43 },
+    inputField:{ borderWidth:1, borderRadius:8, width:'88%', marginTop:15, marginLeft:16, paddingLeft:44, height:43 ,},
     inputFieldText:{ textAlign:'left' },
     searchIcon:{ position:'absolute', marginTop:25, marginLeft:30, opacity: 0.6 },
     text: { fontSize: 22, marginHorizontal: 12, fontWeight:700, fontFamily:'Segoe UI', marginBottom:10 },
@@ -22,12 +22,10 @@ const styles = StyleSheet.create({
     popularButton:{ flexDirection:'row', borderWidth:0.5, width:60, height:35, marginLeft:15, borderRadius:8, justifyContent:'center', alignItems:'center' },
     offerContainer:{ flexDirection:'row', gap:15, marginLeft:12, marginTop: -10, },
     offerLogo:{ resizeMode:"contain", width:'46%', height:200 },
-    categoryItem: { alignItems: 'center', justifyContent: 'center', margin: 4, width: 68, marginLeft:18, marginRight:-2 },
-    categoryCircle: { width: 70, height: 70, borderRadius: 35, resizeMode: 'cover', },
     seeMoreButton:{ backgroundColor:Color.button, borderWidth:0.5, width:'95%', height:30, marginLeft:10, marginTop:20, paddingTop:8, justifyContent:'center', flexDirection:'row', borderRadius:9 },
     seeMoreText:{ textAlign:'center', fontFamily: 'Segoe UI', fontWeight: 400, fontSize: 10, letterSpacing: 0, },
     chevronIcon:{ paddingTop:2, paddingLeft:2 },
-    restaurantCard: { backgroundColor: Color.card, margin: 10, marginTop:24, borderRadius:20, shadowColor:Color.resend, shadowOpacity:0.15, elevation: 4, shadowOffset: { width: 0, height: 8 }, shadowRadius:6 },
+    restaurantCard: { backgroundColor: Color.card, margin: 10, marginTop:24, borderRadius:20, shadowColor:Color.resend, shadowOpacity:0.15, elevation: 4, shadowOffset: { width: 0, height: 8 }, shadowRadius:6 }, 
     restaurantImage: { width: '100%', height: 200, resizeMode: 'cover', borderTopLeftRadius: 20, borderTopRightRadius: 20, },
     restaurantName: { fontSize: 16, fontWeight: 400, fontFamily: 'Segoe UI', letterSpacing: 0, },
     restaurantCategory: { fontSize: 11, color: Color.category, fontFamily:'Segoe UI' ,},
@@ -45,7 +43,33 @@ const styles = StyleSheet.create({
     line:{ height: 2, width: '100%', backgroundColor: 'black', borderRadius: 1, },
     arrowImage:{width:18, height:18},
     queryText:{justifyContent:'center', textAlign:'center', },
-    queryContainer:{justifyContent:'center', textAlign:'center', marginTop:'100%'}
+    queryContainer:{justifyContent:'center', textAlign:'center', marginTop:'100%'},
+    loadingContainer:{flex:1,justifyContent:'center', alignItems:'center'},
+    pressableContainer:{paddingBottom:6},
+    // categoryItem: { alignItems: 'center', justifyContent: 'center', marginVertical: 4,  marginLeft:20,  flex:1 ,},
+    // categoryCircle: { width: '100%', height: 70, borderRadius: 35, resizeMode: 'cover', marginRight:16, },
+    // category:{marginRight:16, fontSize:12},
+
+
+    // categoryItem: { alignItems: 'center', justifyContent: 'center', marginVertical: 4,  marginLeft:20,  flex:1 },
+    categoryCircle: { width: '20%', height: 70, borderRadius: 35, resizeMode: 'cover', marginRight:16, },
+    category:{marginRight:16, fontSize:12},
+    // categoryGrid:{flexDirection: 'row',}
+
+
+    categoryGrid: {
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  paddingHorizontal: 12,
+  marginTop: 8,
+},
+categoryItem: {
+  width: '22%',       // 4 per row
+  maxWidth: 70,       // caps size on big screens
+  alignItems: 'center',
+  marginBottom: 16,
+},
 });export default styles;
 
 

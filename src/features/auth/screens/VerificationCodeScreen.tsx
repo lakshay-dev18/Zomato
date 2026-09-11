@@ -37,7 +37,7 @@ export default function VerificationCodeScreen() {
       </View>
       </SafeAreaView>
       <View style={styles.containerNumber}>
-        <Text style={styles.textNumber}> +91-{phoneNumber} </Text>
+        <Text style={styles.textNumber}> {typeof phoneNumber === 'string'? phoneNumber.replace(' ','-'):null} </Text>
       </View>
       <View style={styles.otpBoxContainer}>
         <OTPInput boxStyle={styles.otpBox}/>

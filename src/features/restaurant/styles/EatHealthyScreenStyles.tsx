@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     mustText:{ backgroundColor:Color.addBText, width:46, height:17, fontSize:10, textAlign:'center', color:Color.addText, borderRadius:4, marginTop:5 },
     rowContainer:{ flexDirection:'row', gap:10 },
     offIcon:{ width:414, height:51 , marginBottom:2},
-    PlaceOrder:{backgroundColor:Color.primary,borderRadius:2 },
+    PlaceOrder:{backgroundColor:Color.primary,borderRadius:6 },
     inputRow:{flexDirection:'row',marginTop: -20, borderWidth: 1, borderColor: 'red', borderRadius: 5, paddingVertical: 4, alignItems: 'center', width:80, marginLeft:5, backgroundColor:Color.primary,gap:10},
     inputButtonText:{fontSize:22, marginLeft:10, color:Color.button},
     quantityText:{fontSize:16, marginLeft:5, color:Color.button},
-    butContainer:{paddingHorizontal:20, paddingBottom:5, marginBottom:20,},
+    butContainer:{paddingHorizontal:20, paddingBottom:5},
     buttonContainer:{flexDirection:'row', justifyContent:'space-between', marginBottom:-10},
     quantityButton:{marginLeft:4, color:Color.button, padding:6},
     priceButton:{marginLeft:10, color:Color.button,paddingBottom:6 },
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     activeTab:{ fontSize:13, padding:21, letterSpacing:2, backgroundColor:Color.resend, color:Color.background, borderRadius:5},
     disableTab:{ fontSize:13, padding:21, letterSpacing:2},
     buttonGroup:{ flexDirection:'row', backgroundColor:Color.bike, width:'90%', marginLeft:15, marginTop:17, borderRadius:5},
-    SorryText:{fontSize:20, position:'absolute', marginTop:50}
+    SorryText:{fontSize:20, position:'absolute', marginTop:50},
+    bottomContainer: { position: 'absolute', alignSelf:'flex-end', flexDirection: 'row', paddingVertical: 7, paddingHorizontal: 15, backgroundColor: Color.resend, borderRadius: 10, bottom:60, right:10 },
+    menuContainer:{ position: 'absolute', alignSelf:'flex-end', flexDirection: 'row', paddingVertical: 7, paddingHorizontal: 15, backgroundColor: Color.resend, borderRadius: 10, bottom:140, right:10 },
+    bottomText:{fontSize:14, fontWeight:600, color:Color.button,}
 });
 export default styles;

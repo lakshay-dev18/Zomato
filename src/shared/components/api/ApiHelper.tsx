@@ -1,6 +1,6 @@
-const fetchApi = async (url: string, method: string = 'GET', body?: any) => {
+const fetchApi = async (url: string, method: string, body?:string) => {
     const res = await fetch(url, {
-        method,
+        method:method,
         headers: { 'Content-Type': 'application/json' },
         body: body ? JSON.stringify(body) : undefined,
     })

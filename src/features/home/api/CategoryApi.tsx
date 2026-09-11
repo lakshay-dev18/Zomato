@@ -1,7 +1,16 @@
+import { useQuery } from '@tanstack/react-query';
+import fetchApi from '../../../shared/components/api/ApiHelper'
 
-type Category = { id: number; name: string; image: string };
+const API1_BASE = process.env.EXPO_PUBLIC_BASE_URL;
 
-export const fetchCategories = async (): Promise<Category[]> => {
-  const res = await fetch("https://6a965dfdfa33b37f821b2c24.mockapi.io/api/v1/categories");
-  return res.json();
+
+const fetchCategories = (method:any) => fetchApi(`${API1_BASE}/categories`,
+    method='Get',
+)
+
+export const useCategories = () => {
+    return useQuery({
+        queryKey: ['categories'],
+        queryFn: fetchCategories,
+    });
 };
